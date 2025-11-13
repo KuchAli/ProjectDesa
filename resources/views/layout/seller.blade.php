@@ -25,9 +25,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Profil</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+                        <li><a class="dropdown-item" href="{{ route('umkm.seller.profil.index') }}">Profil</a></li>
+                        <li><hr class="dropdown-divider" /></li>      
                     </ul>
                 </li>
             </ul>
@@ -38,6 +37,12 @@
         <div class="col-md-3 mb-3 mt-4">
             <div class="list-group">
                 <a href="{{ route('umkm.seller.index') }}" class="list-group-item list-group-item-action {{ request()->is('umkm/seller') ? 'active' : '' }}">🏠 Dashboard</a>
+                <form method="POST" action="{{ route('logout') }}" class="mt-2">
+                    @csrf
+                    <button type="submit" class="list-group-item btn btn-outline-danger">
+                        Logout
+                    </button>
+                </form>
             </div>
         </div>
 
