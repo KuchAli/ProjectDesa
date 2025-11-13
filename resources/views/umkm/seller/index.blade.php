@@ -32,6 +32,7 @@
                                 <a href="#" class="btn btn-sm btn-danger">Hapus</a>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
