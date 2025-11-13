@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UMKM\SellerController;
 use App\Http\Controllers\UMKM\BuyerController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UMKM\Profil\ProfilSellerController;
+use App\Http\Controllers\UMKM\Profil\ProfilBuyerController;
 
 Route::prefix('umkm')->name('umkm.')->group(function () {
     // Halaman utama UMKM
@@ -19,6 +21,15 @@ Route::prefix('umkm')->name('umkm.')->group(function () {
         Route::get('/create', [SellerController::class, 'create'])->name('create');
         Route::post('/', [SellerController::class, 'store'])->name('store');
         Route::get('/{id}/edit', [SellerController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [SellerController::class, 'update'])->name('update');
+        Route::delete('/{id}', [SellerController::class, 'destroy'])->name('destroy');
+
+        // ==========================
+        // Profil Seller
+        // ==========================
+            Route::get('/profil', [ProfilSellerController::class, 'index'])->name('profil.index');
+            Route::get('/profil/edit', [ProfilSellerController::class, 'edit'])->name('profil.edit');
+            Route::put('/profil', [ProfilSellerController::class, 'update'])->name('profil.update');
     });
 
     // ==========================
@@ -27,6 +38,13 @@ Route::prefix('umkm')->name('umkm.')->group(function () {
     Route::middleware('auth')->prefix('buyer')->name('buyer.')->group(function () {
         Route::get('/', [BuyerController::class, 'index'])->name('index');
         Route::get('/cart', [BuyerController::class, 'cart'])->name('cart');
+
+        // ==========================
+        // Profil Buyer
+        // ==========================
+        Route::get('/profil', [ProfilBuyerController::class, 'index'])->name('profil.index');
+        Route::get('/profil/edit', [ProfilBuyerController::class, 'edit'])->name('profil.edit');
+        Route::put('/profil/update', [ProfilBuyerController::class, 'update'])->name('profil.update');
     });
 });
 

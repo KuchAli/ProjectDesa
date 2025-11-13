@@ -57,13 +57,14 @@ class SellerController extends Controller
             'price' => $request->price,
             'stock' => $request->stock,
             'category_id' => $request->category_id,
-            'category_slug' => $categorySlug, // pastikan kolom ini ada di tabel products!
-            'image_path' => $path,
+            'category_slug' => $categorySlug,
+            'image' => $path,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
-        return redirect()->route('seller.index')->with('success', 'Produk berhasil ditambahkan!');
+        return redirect()->route('umkm.seller.index')->with('success', 'Produk berhasil ditambahkan!');
+
     }
 
     public function edit(string $id)
@@ -119,12 +120,12 @@ class SellerController extends Controller
                 'description' => $request->description,
                 'price' => $request->price,
                 'stock' => $request->stock,
-                'image_path' => $path,
+                'image' => $path,
                 'updated_at' => now(),
             ]);
 
-        return redirect()->route('seller.index')->with('success', 'Produk berhasil diperbarui!');
-    }
+       return redirect()->route('umkm.seller.index')->with('success', 'Produk berhasil diperbarui!');
+   }
 
     public function destroy(string $id)
     {
@@ -137,8 +138,8 @@ class SellerController extends Controller
             abort(404);
         }
 
-        if ($produk->image_path) {
-            Storage::disk('public')->delete($produk->image_path);
+        if ($produk->image) {
+            Storage::disk('public')->delete($produk->image);
         }
 
         DB::table('products')
@@ -146,6 +147,6 @@ class SellerController extends Controller
             ->where('seller_id', Auth::id())
             ->delete();
 
-        return redirect()->route('seller.index')->with('success', 'Produk berhasil dihapus!');
-    }
+      return redirect()->route('umkm.seller.index')->with('success', 'Produk berhasil dihapus!');
+   }
 }

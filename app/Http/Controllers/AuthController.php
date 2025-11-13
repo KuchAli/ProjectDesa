@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use App\Models\User;
 
 class AuthController extends Controller
@@ -51,6 +52,13 @@ class AuthController extends Controller
         
 
         ]);
+        $user->profil()->create([
+            'name' => $user->name,
+            'slug' => Str::slug($user->name),
+            'phone' => null,
+            'address' => null,
+            'image_path' => null,
+        ]);
 
         Auth::login($user);
         return redirect()->route('umkm.buyer.index');
@@ -84,7 +92,7 @@ class AuthController extends Controller
             'address' => 'required',
             'password' => 'required|min:6|confirmed'
         ]);
-
+        
         $user = User::create([
             
             'name' => $request->name,
@@ -94,7 +102,14 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             'role' => 'seller'
             
-
+            
+        ]);
+        $user->profil()->create([
+            'name' => $user->name,
+            'slug' => Str::slug($user->name),
+            'phone' => null,
+            'address' => null,
+            'image_path' => null,
         ]);
 
         Auth::login($user);

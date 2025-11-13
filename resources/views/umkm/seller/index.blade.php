@@ -26,10 +26,14 @@
                             <td>{{ number_format($item->price, 0, ',', '.') }}</td>
                             <td>{{ $item->stock }}</td>
                             <td>{{ $item->category_name }}</td>
-                            <td><img src="{{ $item->image_path ? asset('storage/' . $item->image_path) : 'https://via.placeholder.com/100' }}" alt="{{ $item->name }}" width="100"></td>
+                            <td><img src="{{ $item->image ? asset('storage/' . $item->image) : 'https://via.placeholder.com/100' }}" width="100"></td>
                             <td>
-                                <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+                                <a href="{{ route('umkm.seller.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                <form action="{{ route('umkm.seller.destroy', $item->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
