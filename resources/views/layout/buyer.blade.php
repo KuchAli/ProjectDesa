@@ -16,14 +16,6 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         </ul>
                     
-                    <form class="d-flex ms-auto" action="{{ route('umkm.buyer.cart') }}"> 
-                        <button class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
-                    
                 </div>
             </div>
         </nav>
@@ -34,9 +26,6 @@
             <div class="list-group">
                 <a href="{{ route('umkm.buyer.index') }}" class="list-group-item list-group-item-action {{ request()->is('umkm/buyer') ? 'active' : '' }}">
                     🏠 Beranda
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                    📦 Riwayat Pesanan
                 </a>
                 <form method="POST" action="{{ route('logout') }}" class="mt-2">
                     @csrf

@@ -19,9 +19,11 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        if (Auth::attempt(array_merge($credentials, ['role' => 'buyer']))) {
+       if (Auth::attempt(array_merge($credentials, ['role' => 'buyer']))) {
+            $request->session()->regenerate();
             return redirect()->route('umkm.buyer.index');
         }
+
 
         return back()->withErrors(['email' => 'Email atau password salah atau bukan akun pembeli.']);
     }
@@ -33,14 +35,21 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
+            'phone' => 'required',
+            'address' => 'required',
             'password' => 'required|min:6|confirmed'
         ]);
 
         $user = User::create([
+           
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
             'password' => Hash::make($request->password),
             'role' => 'buyer'
+        
+
         ]);
 
         Auth::login($user);
@@ -71,14 +80,21 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
+            'phone' => 'required',
+            'address' => 'required',
             'password' => 'required|min:6|confirmed'
         ]);
 
         $user = User::create([
+            
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
             'password' => Hash::make($request->password),
             'role' => 'seller'
+            
+
         ]);
 
         Auth::login($user);

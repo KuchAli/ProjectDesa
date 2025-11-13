@@ -16,6 +16,14 @@
             <label>Email</label>
             <input type="email" name="email" class="form-control" required>
         </div>
+         <div class="mb-3">
+            <label>No. Telepon</label>
+            <input type="text" name="phone" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Alamat</label>
+            <input type="text" name="address" class="form-control" required>
+        </div>
         <div class="mb-3">
             <label>Password</label>
             <input type="password" name="password" class="form-control" required>
@@ -24,7 +32,8 @@
             <label>Konfirmasi Password</label>
             <input type="password" name="password_confirmation" class="form-control" required>
         </div>
-        <button class="btn btn-primary w-100">Daftar</button>
+        <button class="btn btn-success w-100">Daftar</button>
     </form>
+    <a href="{{ route('login.seller') }}" class="btn btn-outline-success mt-3">Kembali Ke Login</a>
 </div>
 @endsection

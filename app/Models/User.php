@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var list<string>
      */
    protected $fillable = [
-        'name', 'email', 'password', 'role', // role: 'seller' atau 'buyer'
+        'name', 'email','phone', 'address', 'password', 'role', // role: 'seller' atau 'buyer'
     ];
 
     // Relasi: kalau user adalah penjual

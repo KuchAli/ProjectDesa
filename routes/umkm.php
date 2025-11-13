@@ -5,22 +5,30 @@ use App\Http\Controllers\UMKM\SellerController;
 use App\Http\Controllers\UMKM\BuyerController;
 use App\Http\Controllers\AuthController;
 
-Route::prefix('umkm')->group(function () {
+Route::prefix('umkm')->name('umkm.')->group(function () {
+    // Halaman utama UMKM
     Route::get('/', function () {
         return view('umkm.index');
-    })->name('umkm.index');
+    })->name('index');
 
-    // Penjual
-    Route::prefix('seller')->group(function () {
-        Route::get('/', [SellerController::class, 'index'])->name('umkm.seller.index');
-        Route::get('/create', [SellerController::class, 'create'])->name('umkm.seller.create');
+    // ==========================
+    // Penjual (Seller) - Wajib Login
+    // ==========================
+    Route::middleware('auth')->prefix('seller')->name('seller.')->group(function () {
+        Route::get('/', [SellerController::class, 'index'])->name('index');
+        Route::get('/create', [SellerController::class, 'create'])->name('create');
+        Route::post('/', [SellerController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [SellerController::class, 'edit'])->name('edit');
     });
 
-    // Pembeli
-    Route::prefix('buyer')->group(function () {
-        Route::get('/', [BuyerController::class, 'index'])->name('umkm.buyer.index');
-        Route::get('/cart', [BuyerController::class, 'cart'])->name('umkm.buyer.cart');
+    // ==========================
+    // Pembeli (Buyer) - Wajib Login
+    // ==========================
+    Route::middleware('auth')->prefix('buyer')->name('buyer.')->group(function () {
+        Route::get('/', [BuyerController::class, 'index'])->name('index');
+        Route::get('/cart', [BuyerController::class, 'cart'])->name('cart');
     });
 });
 
+// Route logout umum
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
