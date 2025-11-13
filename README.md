@@ -10,11 +10,8 @@
 
 ## ✨ Fitur Utama
 
-- **Manajemen Data Penduduk**: Tambah, ubah, hapus, dan kelola data warga desa secara terpusat.
-- **Pengelolaan Surat dan Administrasi**: Generator surat otomatis, cetak, serta riwayat permohonan surat.
-- **Panel Administrator**: Kelola pengguna, hak akses, serta data master desa.
-- **Pelaporan & Statistik**: Tampilkan statistik penduduk serta rekap surat dalam bentuk grafik dan tabel.
-- **Notifikasi**: Informasi update administratif dan notifikasi pengajuan.
+- **Monitoring Bagan Desa**: Memonitoring Profil desa , bagan dan lokasi desa .
+- **UMKM**: Untuk penduduk desa yang ingin menjual produk lokal .
 - **Interface User-Friendly**: Antarmuka modern dan responsif untuk desktop maupun mobile.
 
 ## 🛠 Teknologi yang Digunakan
