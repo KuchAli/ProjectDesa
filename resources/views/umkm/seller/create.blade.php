@@ -11,44 +11,39 @@
                 @csrf
 
                 {{-- NAMA PRODUK --}}
-                <div class="mb-3">
-                    <label class="form-label">Nama Produk</label>
-                    <input type="text" class="form-control" name="nama" placeholder="Masukkan nama produk" required>
+                <div class="text-center mb-3">
+                <input type="text" class="form-control" name="name" placeholder="Masukkan nama produk" required>
                 </div>
 
                 {{-- HARGA --}}
-                <div class="mb-3">
-                    <label class="form-label">Harga</label>
-                    <input type="number" class="form-control" name="harga" placeholder="Masukkan harga produk" required>
+                <div class="text-center mb-3">
+                    <input type="number" class="form-control" name="price" placeholder="Masukkan harga produk" required>
                 </div>
 
                 {{-- STOK --}}
-                <div class="mb-3">
-                    <label class="form-label">Stok</label>
-                    <input type="number" class="form-control" name="stok" placeholder="Masukkan jumlah stok" required>
+                <div class="text-center mb-3">
+                    <input type="number" class="form-control" name="stock" placeholder="Masukkan jumlah stok" required>
                 </div>
 
                 {{-- KATEGORI --}}
-                <div class="mb-3">
-                    <label class="form-label">Kategori</label>
-                    <select name="kategori_id" class="form-select" required>
+                <div class="text-center mb-3">
+                    <select name="category_id" class="form-select" required>
                         <option value="">-- Pilih Kategori --</option>
                         @foreach ($categories as $k)
                             <option value="{{ $k->id }}">{{ $k->name }}</option>
                         @endforeach
                     </select>
                 </div>
+               
 
                 {{-- DESKRIPSI --}}
-                <div class="mb-3">
-                    <label class="form-label">Deskripsi</label>
-                    <textarea name="deskripsi" class="form-control" rows="4" placeholder="Tuliskan deskripsi produk..."></textarea>
+                <div class="text-center mb-3">
+                    <textarea name="description" class="form-control" rows="4" placeholder="Tuliskan deskripsi produk..."></textarea>
                 </div>
 
                 {{-- GAMBAR PRODUK --}}
-                <div class="mb-3">
-                    <label class="form-label">Gambar Produk</label>
-                    <input type="file" class="form-control" name="gambar" id="gambar" accept="image/*" onchange="previewImage(event)">
+                <div class="text-center mb-3">
+                    <input type="file" class="form-control" name="image" accept="image/*">
                 </div>
 
                 {{-- PREVIEW GAMBAR --}}
