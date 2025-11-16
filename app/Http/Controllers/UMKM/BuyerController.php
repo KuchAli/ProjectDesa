@@ -29,4 +29,12 @@ class BuyerController extends Controller
         $products = Product::latest()->paginate(10);
         return view('umkm.buyer.products', compact('products'));
     }
+
+    
+    public function show($id)
+    {
+        $products = Product::with(['seller'])->findOrFail($id);
+
+        return view('umkm.buyer.detail', compact('products'));
+    }
 }

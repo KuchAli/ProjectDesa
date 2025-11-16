@@ -39,6 +39,7 @@ Route::prefix('umkm')->name('umkm.')->group(function () {
     Route::middleware('auth')->prefix('buyer')->name('buyer.')->group(function () {
         Route::get('/', [BuyerController::class, 'index'])->name('index');
         Route::get('/products', [BuyerController::class, 'products'])->name('products');
+        Route::get('/products/{id}', [BuyerController::class, 'show'])->name('products.detail');
 
         // ==========================
         // Profil Buyer

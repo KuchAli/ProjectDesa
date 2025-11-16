@@ -36,7 +36,7 @@
                 @endphp
 
                 <div class="d-flex justify-content-center gap-2">
-                    <a href="#" class="btn btn-outline-secondary btn-sm">Detail Produk</a>
+                    <a href="{{ route('umkm.buyer.products.detail', $p->id) }}" class="btn btn-outline-secondary btn-sm">Detail Produk</a>
                     <a class="btn btn-outline-success btn-sm {{ !$phone ? 'disabled' : '' }}"
                         href="{{ $waLink }}"
                         target="_blank"
