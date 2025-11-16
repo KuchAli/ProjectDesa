@@ -13,7 +13,7 @@ class Product extends Model
     // Penjual produk
     public function seller()
     {
-        return $this->belongsTo(User::class, 'seller_id');
+        return $this->belongsTo(User::class, 'seller_id', 'id');
     }
 
     // Kategori produk
@@ -27,5 +27,11 @@ class Product extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
 }
 

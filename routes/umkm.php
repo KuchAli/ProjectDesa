@@ -6,6 +6,7 @@ use App\Http\Controllers\UMKM\BuyerController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UMKM\Profil\ProfilSellerController;
 use App\Http\Controllers\UMKM\Profil\ProfilBuyerController;
+use App\Models\Product;
 
 Route::prefix('umkm')->name('umkm.')->group(function () {
     // Halaman utama UMKM
@@ -37,7 +38,7 @@ Route::prefix('umkm')->name('umkm.')->group(function () {
     // ==========================
     Route::middleware('auth')->prefix('buyer')->name('buyer.')->group(function () {
         Route::get('/', [BuyerController::class, 'index'])->name('index');
-        Route::get('/cart', [BuyerController::class, 'cart'])->name('cart');
+        Route::get('/products', [BuyerController::class, 'products'])->name('products');
 
         // ==========================
         // Profil Buyer
