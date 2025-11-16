@@ -18,10 +18,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto fs-4 gap-3 fw-bold ">
-                <li class="nav-item"><a href="{{ url('/') }}" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="{{ route('profil') }}" class="nav-link">Profil Desa</a></li>
-                <li class="nav-item"><a href="{{ route('listing') }}" class="nav-link">Listing</a></li>
-                <li class="nav-item"><a href="{{ route('umkm.index') }}" class="nav-link active">UMKM</a></li>
+                <li class="nav-item"><a href="{{ url('/') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Home</a></li>
+                <li class="nav-item"><a href="{{ route('profil') }}" class="nav-link {{ request()->is('profil') ? 'active' : '' }}">Profil Desa</a></li>
+                <li class="nav-item"><a href="{{ route('listing') }}" class="nav-link {{ request()->is('listing') ? 'active' : '' }}">Listing</a></li>
+                <li class="nav-item"><a href="{{ route('umkm.index') }}" class="nav-link {{ request()->is('umkm') ? 'active' : '' }}">UMKM</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Masuk</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Admin</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
