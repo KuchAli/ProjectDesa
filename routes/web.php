@@ -23,5 +23,9 @@ Route::post('/login-seller', [AuthController::class, 'loginSeller']);
 Route::get('/register-seller', [AuthController::class, 'registerSellerForm'])->name('register.seller');
 Route::post('/register-seller', [AuthController::class, 'registerSeller']);
 
+
+Route::get('admin/login', [AuthController::class, 'loginAdminForm'])->name('admin.login');
+Route::post('admin/login', [AuthController::class, 'loginAdmin'])->name('admin.login.process');
+
 require __DIR__.'/umkm.php';
 require __DIR__.'/admin.php';

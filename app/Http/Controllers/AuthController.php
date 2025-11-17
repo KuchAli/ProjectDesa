@@ -116,6 +116,32 @@ class AuthController extends Controller
         return redirect()->route('umkm.seller.index');
     }
 
+        // ======== LOGIN ADMIN ======== //
+    public function loginAdminForm()
+    {
+        return view('auth.login_admin');
+    }
+
+    public function loginAdmin(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if (Auth::guard('web')->attempt(array_merge($credentials, [
+            'role' => 'admin'
+        ]))) {
+            $request->session()->regenerate();
+            return redirect()->route('admin.dashboard');
+        }
+
+        return back()->withErrors([
+            'email' => 'Email atau password salah atau bukan akun admin.'
+        ]);
+    }
+
+
     // ======== LOGOUT ======== //
     public function logout()
     {
