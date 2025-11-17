@@ -24,3 +24,4 @@ Route::get('/register-seller', [AuthController::class, 'registerSellerForm'])->n
 Route::post('/register-seller', [AuthController::class, 'registerSeller']);
 
 require __DIR__.'/umkm.php';
+require __DIR__.'/admin.php';
