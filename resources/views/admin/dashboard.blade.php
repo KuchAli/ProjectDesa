@@ -65,12 +65,12 @@
             @empty
                 <p class="text-muted">Belum ada produk.</p>
             @endforelse
+            
+            <div class="d-flex justify-content-center mt-4">
+                {{ $products->links() }}
+            </div>
 
         </div>
-        <div class="d-flex justify-content-center mt-3">
-            {{ $products->links() }}
-        </div>
-
         <h3 class="mt-5">Daftar Pengguna</h3>
 
         <table class="table table-bordered mt-3">
@@ -102,10 +102,10 @@
                 </tr>
                 @endforeach
             </tbody>
+            <div class="d-flex justify-content-center mt-3">
+                {{ $users->links() }}
+            </div>
         </table>
-        <div class="d-flex justify-content-center mt-3">
-            {{ $users->links() }}
-        </div>
 
 
         <h3 class="mt-5">Daftar Kategori</h3>
@@ -127,12 +127,12 @@
                 </tr>
                 @endforeach
             </tbody>
+            
+            <!-- Pagination -->
+            <div class="d-flex justify-content-center mt-3">
+                {{ $categories->links() }}
+            </div>
         </table>
-
-        <!-- Pagination -->
-        <div class="d-flex justify-content-center mt-3">
-            {{ $categories->links() }}
-        </div>
 
     </div>
 @endsection
