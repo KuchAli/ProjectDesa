@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', 'Login Pembeli')
+@section('title', 'Login Admin')
 
 @section('content')
 <div class="container py-5 " style="max-width: 500px;">

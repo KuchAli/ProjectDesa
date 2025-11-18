@@ -12,16 +12,23 @@ class DashboardController extends Controller
 {
     public function index()
     {
-       $totalUser = User::where('role', 'seller')->count()
-               + User::where('role', 'buyer')->count();
-
+        $totalUser = User::whereIn('role', ['seller', 'buyer'])->count();
         $totalProduct = Product::count();
         $totalCategory = Category::count();
+
+        // Pagination
+        $products = Product::with('seller')->latest()->paginate(8);
+        $users = User::orderBy('created_at', 'desc')->paginate(10);
+        $categories = Category::withCount('products')->orderBy('name')->paginate(10);
 
         return view('admin.dashboard', compact(
             'totalUser',
             'totalProduct',
-            'totalCategory'
+            'totalCategory',
+            'products',
+            'users',
+            'categories'
         ));
     }
+
 }
