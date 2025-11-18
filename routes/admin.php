@@ -18,7 +18,7 @@ Route::middleware(['auth'])
         Route::resource('/profil-desa', ProfilDesaController::class);
         Route::resource('/umkm', UMKMController::class);
         Route::resource('/kategori', KategoriController::class);
-        Route::resource('/users',   UserController::class);
+        Route::resource('/users', UserController::class);
 
         Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 });
