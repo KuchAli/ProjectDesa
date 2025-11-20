@@ -57,5 +57,22 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
+            toggle.addEventListener('click', function () {
+                let parent = this.parentElement;
+                let menu = parent.querySelector('.dropdown-menu');
+
+                // Tutup semua dropdown lain
+                document.querySelectorAll('.dropdown-menu').forEach(function(m) {
+                    if (m !== menu) m.classList.remove('show');
+                });
+
+                // Toggle dropdown saat ini
+                menu.classList.toggle('show');
+            });
+        });
+    </script>
+
 </body>
 </html>

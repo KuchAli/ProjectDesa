@@ -23,9 +23,9 @@
                 <li class="nav-item"><a href="{{ route('listing') }}" class="nav-link {{ request()->is('listing') ? 'active' : '' }}">Listing</a></li>
                 <li class="nav-item"><a href="{{ route('umkm.index') }}" class="nav-link {{ request()->is('umkm') ? 'active' : '' }}">UMKM</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Masuk</a>
+                    <a class="nav-link dropdown-toggle {{  request()->is('admin/login') ? 'active' : '' }}" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Masuk</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{{ route('admin.login') }}">Admin</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.login') }} ">Admin</a></li>
                     </ul>
                 </li>
             </ul>

@@ -1,60 +1,63 @@
-<style>
-    .section-box {
-        background-color: white;
-        border-radius: 15px;
-        padding: 25px;
-        margin-bottom: 25px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border: 2px solid #a8e6cf; /* Garis luar hijau muda */
-    }
-    .title-text {
-        color: #004d40; /* Hijau gelap */
-        font-size: 1.8em;
-        font-weight: bold;
-        text-align: center;
-        margin-bottom: 15px;
-    }
-    .visi-text {
-        text-align: center;
-        font-size: 1.1em;
-        font-weight: 600;
-        color: #333;
-    }
-    .misi-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-    .misi-item {
-        background-color: #f5f5f5; /* Latar belakang abu-abu muda */
-        padding: 12px 15px;
-        margin-bottom: 8px;
-        border-radius: 8px;
-        font-size: 1em;
-        color: #444;
-    }
-</style>
+<div style="padding: 40px;">
 
-{{-- Container Utama --}}
-<div style=" padding: 40px;">
-
-    <div class="section-box" style="border-color: #4CAF50;">
+    {{-- VISI --}}
+    <div class="section-box text-center" style="border-color: #4CAF50;">
         <h2 class="title-text">Visi</h2>
+
         <p class="visi-text">
-            Menjadi perusahaan teknologi terdepan di Asia Tenggara yang menginspirasi dan mendorong kemajuan digital melalui inovasi yang berkelanjutan.
+            {{ $visiMisi->visi ?? 'Belum ada visi.' }}
         </p>
     </div>
 
-    <div class="section-box">
+    {{-- MISI --}}
+    <div class="section-box text-center">
         <h2 class="title-text">Misi</h2>
+
         <ul class="misi-list">
-            {{-- Misi ditulis langsung di Blade --}}
-            <li class="misi-item">1. Mengembangkan produk dan solusi teknologi yang inovatif, mudah diakses, dan memberikan nilai tambah nyata bagi pengguna.</li>
-            <li class="misi-item">2. Membangun talenta digital yang unggul dan lingkungan kerja yang kolaboratif serta berorientasi pada hasil.</li>
-            <li class="misi-item">3. Memperluas jangkauan pasar secara regional dan global dengan menjaga kualitas layanan pelanggan yang prima.</li>
-            <li class="misi-item">4. Berkontribusi aktif dalam menciptakan ekosistem digital yang sehat dan mendukung pembangunan berkelanjutan.</li>
-            <li class="misi-item">5. Menerapkan tata kelola perusahaan yang baik (Good Corporate Governance) untuk pertumbuhan bisnis yang etis dan stabil.</li>
+            @if ( $visiMisi->misi)
+                @foreach (explode("\n", $visiMisi->misi) as $index => $item)
+                    @if (trim($item) != '')
+                        <li class="misi-item">{{ $index + 1 }}. {{ $item }}</li>
+                    @endif
+                @endforeach
+            @else
+                <li class="misi-item">Belum ada misi.</li>
+            @endif
         </ul>
     </div>
 
 </div>
+<style>
+    .section-box {
+        border: 2px solid #2196F3;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 30px;
+        background-color: #f9f9f9;
+    }
+
+    .title-text {
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+
+    .visi-text {
+        font-size: 18px;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .misi-list {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .misi-item {
+        font-size: 18px;
+        color: #555;
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+</style>

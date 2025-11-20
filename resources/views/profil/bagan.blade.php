@@ -1,5 +1,5 @@
 <section id="bagan-desa" class=" p-5 bg-white rounded shadow-sm">
-    <h2 class="text-center mb-4 section-title">Bagan Desa</h2>
+    <h2 class=" mb-4 section-title">Bagan Desa</h2>
     
     <div class="row">
         

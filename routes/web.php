@@ -5,12 +5,22 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UMKM\BuyerController;
 use App\Http\Controllers\UMKM\SellerController;
+use App\Http\Controllers\VisiMisiController;
+use App\Models\Visimisi;
+use App\Models\Sejarah;
 
 
 Route::view('/', 'home');
-Route::view('/profil', 'profil.index')->name('profil');
+Route::get('/profil', function () {
+    $visiMisi = Visimisi::first();
+    $sejarah = Sejarah::first();
+    
+    return view('profil.index', compact('visiMisi', 'sejarah'));
+})->name('profil');
+
 Route::view('/umkm', 'umkm.index')->name('umkm.index');
 Route::view('/listing', 'listing')->name('listing');
+
 
 // Auth
 Route::get('/login-buyer', [AuthController::class, 'loginBuyerForm'])->name('login.buyer');

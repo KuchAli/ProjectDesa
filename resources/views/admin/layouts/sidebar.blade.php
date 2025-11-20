@@ -12,11 +12,23 @@
                 </a>
             </li>
 
-            <li>
-                <a href="{{ route('admin.profil-desa.index') }}" class="{{ request()->is('admin/profil-desa*') ? 'active' : '' }}">
+            <li class="has-dropdown {{ request()->is('admin/profil-desa*') ? 'active' : '' }}">
+                <a href="javascript:void(0);" class="dropdown-toggle">
                     <i class="bi bi-building"></i>
                     <span>Profil Desa</span>
+                    <i class="bi bi-caret-down-fill ms-auto"></i>
                 </a>
+                <ul class="dropdown-menu {{ request()->is('admin/profil-desa*') ? 'show' : '' }} " style="background-color: #023c0e;">
+                    <li>
+                        <a href="{{ route('admin.profilDesa.visiMisi.index') }}" class="{{ request()->is('admin/profil-desa/visi-misi*') ? 'active' : '' }}">Visi Misi</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.profilDesa.bagan.index') }}" class="{{ request()->is('admin/profil-desa/bagan*') ? 'active' : '' }}   ">Bagan</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.profilDesa.sejarah.index') }}" class="{{ request()->is('admin/profil-desa/sejarah*') ? 'active' : '' }}">Sejarah</a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a href="{{ route('admin.umkm.index') }}" class="{{ request()->is('admin/umkm*') ? 'active' : '' }}">
