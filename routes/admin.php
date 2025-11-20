@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\profilDesa\ProfilDesaController;
 use App\Http\Controllers\Admin\UMKMController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\KepalaDesaController;
 
 
 Route::middleware(['auth'])
@@ -44,6 +45,8 @@ Route::middleware(['auth'])
             Route::put('/sejarah/{id}', [ProfilDesaController::class, 'sejarahUpdate'])->name('sejarah.update');
             Route::delete('/sejarah/{id}', [ProfilDesaController::class, 'sejarahDestroy'])->name('sejarah.destroy');
         });
+
+        Route::resource('/kepala-desa', KepalaDesaController::class);
 
 
 

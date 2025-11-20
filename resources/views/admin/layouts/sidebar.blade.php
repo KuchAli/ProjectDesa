@@ -31,6 +31,12 @@
                 </ul>
             </li>
             <li>
+                <a href="{{ route('admin.kepala-desa.index') }}" class="{{ request()->is('admin/kepala-desa*') ? 'active' : '' }}">
+                    <i class="bi bi-person-circle"></i>
+                    <span>Kepala Desa</span> 
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('admin.umkm.index') }}" class="{{ request()->is('admin/umkm*') ? 'active' : '' }}">
                     <i class="bi bi-bag"></i>
                     <span>UMKM</span>
