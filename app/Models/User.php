@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var list<string>
      */
    protected $fillable = [
-        'name', 'email','phone', 'address', 'password', 'role', // role: 'seller' atau 'buyer'
+        'name', 'email','phone', 'address', 'password', 'role', 'user_slug','image_path', // role: 'seller' atau 'buyer'
     ];
 
     // Relasi: kalau user adalah penjual
@@ -46,8 +46,4 @@ class User extends Authenticatable
         return $this->role === 'buyer';
     }
 
-     public function profil()
-    {
-        return $this->hasOne(Profil::class); // 1 user → 1 profil
-    }
 }

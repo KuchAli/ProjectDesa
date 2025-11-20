@@ -24,13 +24,15 @@ Route::prefix('umkm')->name('umkm.')->group(function () {
         Route::get('/{id}/edit', [SellerController::class, 'edit'])->name('edit');
         Route::put('/{id}', [SellerController::class, 'update'])->name('update');
         Route::delete('/{id}', [SellerController::class, 'destroy'])->name('destroy');
-
         // ==========================
         // Profil Seller
         // ==========================
-            Route::get('/profil', [ProfilSellerController::class, 'index'])->name('profil.index');
-            Route::get('/profil/edit', [ProfilSellerController::class, 'edit'])->name('profil.edit');
-            Route::put('/profil', [ProfilSellerController::class, 'update'])->name('profil.update');
+        Route::prefix('profil')->name('profil.')->group(function () {
+            Route::get('/', [ProfilSellerController::class, 'index'])->name('index');
+            Route::get('/{id}/edit', [ProfilSellerController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [ProfilSellerController::class, 'update'])->name('update');
+        });
+        
     });
 
     // ==========================
@@ -44,9 +46,11 @@ Route::prefix('umkm')->name('umkm.')->group(function () {
         // ==========================
         // Profil Buyer
         // ==========================
-        Route::get('/profil', [ProfilBuyerController::class, 'index'])->name('profil.index');
-        Route::get('/profil/edit', [ProfilBuyerController::class, 'edit'])->name('profil.edit');
-        Route::put('/profil/update', [ProfilBuyerController::class, 'update'])->name('profil.update');
+        Route::prefix('profil')->name('profil.')->group(function () {
+            Route::get('/', [ProfilBuyerController::class, 'index'])->name('index');
+            Route::get('/{id}/edit', [ProfilBuyerController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [ProfilBuyerController::class, 'update'])->name('update');
+        });
     });
 });
 

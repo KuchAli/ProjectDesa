@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\UMKM\Profil;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profil;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str; // untuk membuat slug
@@ -12,19 +14,19 @@ class ProfilSellerController extends Controller
 {
     public function index()
     {
-        $profil = Auth::user()->profil;
-        return view('umkm.seller.profil.index', compact('profil'));
+        $profil = User::where('id', Auth::id())->first();
+        return view('umkm.seller.profil.index', compact('profil',));
     }
 
-    public function edit()
+    public function edit(string $id)
     {
-        $profil = Auth::user()->profil;
+        $profil = User::where('id', Auth::id())->first();
         return view('umkm.seller.profil.edit', compact('profil'));
     }
 
-    public function update(Request $request, String $id)
+    public function update(Request $request, string $id)
     {
-        $profil = Auth::user()->profil;
+        $profil = User::where('id', Auth::id())->first();
 
         // Validasi input
         $request->validate([

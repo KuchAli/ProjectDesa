@@ -14,11 +14,11 @@
 
     <div class="flex items-center space-x-6">
         <!-- Foto Profil -->
-        <div class="w-32 h-32 border rounded-full overflow-hidden">
+        <div class="col-md-4 text-center">
             @if($profil->image_path)
-                <img src="{{ asset('storage/' . $profil->image_path) }}" alt="Foto Profil" class="w-full h-full object-cover">
+                <img src="{{ asset('storage/' . $profil->image_path) }}" alt="Foto Profil" class="rounded-circle border border-3 mb-3" style="width: 400px; height: 380px; object-fit: cover;">
             @else
-                <img src="{{ asset('images/default-profile.png') }}" alt="Foto Profil Default" class="w-full h-full object-cover">
+                <img src="{{ asset('images/default-profile.png') }}" alt="Foto Profil Default" class="rounded-circle border border-3 mb-3" style="width: 400px; height: 380px; object-fit: cover;">
             @endif
         </div>
 
@@ -27,7 +27,7 @@
             <p><strong>Nama:</strong> {{ $profil->name }}</p>
             <p><strong>No HP:</strong> {{ $profil->phone ?? '-' }}</p>
             <p><strong>Alamat:</strong> {{ $profil->address ?? '-' }}</p>
-            <a href="{{ route('umkm.seller.profil.edit') }}" class="mt-3 btn btn-outline-primary">
+            <a href="{{ route('umkm.seller.profil.edit', $profil->id) }}" class="mt-3 btn btn-outline-success">
                 Edit Profil
             </a>
         </div>

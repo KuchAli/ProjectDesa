@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\UMKM\Profil;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profil;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -12,19 +14,19 @@ class ProfilBuyerController extends Controller
 {
     public function index()
     {
-        $profil = Auth::user()->profil;
+        $profil = User::where('id', Auth::id())->first();
         return view('buyer.profil.index', compact('profil'));
     }
 
     public function edit()
     {
-        $profil = Auth::user()->profil;
+        $profil = User::where('id', Auth::id())->first();
         return view('buyer.profil.edit', compact('profil'));
     }
 
     public function update(Request $request)
     {
-        $profil = Auth::user()->profil;
+        $profil = User::where('id', Auth::id())->first();
 
         // Validasi input
         $request->validate([
