@@ -14,11 +14,12 @@
                
             </div>
             <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="bi bi-search"></i></button>
-                </div>
+             <form action="{{ route('umkm.seller.index') }}" method="GET"
+                class="d-flex flex-column flex-md-row align-items-md-center ms-auto my-2">
+                <input type="text" name="search" class="form-control me-md-2 mb-2 mb-md-0"
+                    value="{{ request('search') }}"
+                    placeholder="Cari produk atau penjual…">
+                <button class="btn btn-success btn-sm">Search</button>
             </form>
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">

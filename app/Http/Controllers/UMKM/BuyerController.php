@@ -18,7 +18,20 @@ class BuyerController extends Controller
         }
 
         // Ambil produk + data penjual
-        $products = Product::with('seller')->latest()->paginate(8);
+        $keyword = request('search');
+        $products = Product::with('seller')
+        ->when($keyword, function ($query) use ($keyword) {
+            $query->where('name', 'like', "%{$keyword}%")
+                ->orWhere('price', 'like', "%{$keyword}%")
+                ->orWhereHas('seller', function($sellerQuery) use ($keyword) {
+                        $sellerQuery->where('name', 'like', "%{$keyword}%");
+                });
+        })
+        ->latest()
+        ->paginate(8);
+
+// supaya pagination tetap membawa query search
+$products->appends(['search' => $keyword]);
 
         return view('umkm.buyer.index', compact('products'));
     }

@@ -19,6 +19,7 @@
                 <div class="text-center">
                     <h5 class="fw-bolder">{{ $p->name }}</h5>
                     Rp {{ number_format($p->price, 0, ',', '.') }}
+                    <p class="text-muted">Penjual:{{ $p->user->name}}</p>
                 </div>
             </div>
 

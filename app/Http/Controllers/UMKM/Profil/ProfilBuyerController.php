@@ -15,13 +15,13 @@ class ProfilBuyerController extends Controller
     public function index()
     {
         $profil = User::where('id', Auth::id())->first();
-        return view('buyer.profil.index', compact('profil'));
+        return view('umkm.buyer.profil.index', compact('profil'));
     }
 
     public function edit()
     {
         $profil = User::where('id', Auth::id())->first();
-        return view('buyer.profil.edit', compact('profil'));
+        return view('umkm.buyer.profil.edit', compact('profil'));
     }
 
     public function update(Request $request)

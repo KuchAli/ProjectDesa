@@ -5,7 +5,7 @@
         <h2 class="mb-4">Daftar Produk</h2>
         <div class="card">
             <div class="card-body">
-                <a href="{{ route('umkm.seller.create') }}" class="btn btn-primary mb-3">+ Tambah Produk</a>
+                <a href="{{ route('umkm.seller.create') }}" class="btn btn-success mb-3">+ Tambah Produk</a>
                 <table class="table table-bordered table-striped">
                     <thead class="table-dark">
                         <tr>

@@ -11,17 +11,33 @@ use App\Models\Category;
 
 class SellerController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $sellerId = Auth::id();
+        $keyword = $request->input('search');
+
         $produk = DB::table('products')
             ->join('categories', 'products.category_id', '=', 'categories.id')
-            ->select('products.*', 'categories.name as category_name', 'categories.slug as category_slug')
+            ->select(
+                'products.*',
+                'categories.name as category_name',
+                'categories.slug as category_slug'
+            )
             ->where('products.seller_id', $sellerId)
+            ->when($keyword, function ($query) use ($keyword) {
+                $query->where(function ($q) use ($keyword) {
+                    $q->where('products.name', 'like', "%{$keyword}%")
+                    ->orWhere('products.price', 'like', "%{$keyword}%")
+                    ->orWhere('categories.name', 'like', "%{$keyword}%");
+                });
+            })
             ->latest('products.created_at')
             ->paginate(10);
 
-        return view('umkm.seller.index', compact('produk'));
+        $produk->appends(['search' => $keyword]);
+
+        return view('umkm.seller.index', compact('produk', 'keyword'));
+
     }
 
     public function create()

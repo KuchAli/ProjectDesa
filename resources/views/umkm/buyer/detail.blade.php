@@ -23,6 +23,8 @@
 
             <p class="mt-3">{{ $products->description }}</p>
 
+            <p class="text-muted">Penjual: {{ $products->seller->name }}</p>
+
             @php
                 $phone = $products->seller->phone ?? null;
 
