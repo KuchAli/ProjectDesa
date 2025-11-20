@@ -6,11 +6,17 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UMKM\BuyerController;
 use App\Http\Controllers\UMKM\SellerController;
 use App\Http\Controllers\VisiMisiController;
+use App\Models\KepalaDesa;
 use App\Models\Visimisi;
 use App\Models\Sejarah;
 
 
-Route::view('/', 'home');
+Route::get('/', function () {
+    $data = KepalaDesa::first();
+    
+    return view('home', compact('data'));
+})->name('home');
+
 Route::get('/profil', function () {
     $visiMisi = Visimisi::first();
     $sejarah = Sejarah::first();

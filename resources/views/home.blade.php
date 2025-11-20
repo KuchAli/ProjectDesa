@@ -71,10 +71,17 @@
             <div class="row align-items-center">
                 <!-- Gambar di sebelah kiri -->
                 <div class="col-md-4 text-center">
-                    <img src="https://cdn.digitaldesa.com/statics/profil-v2/assets/fallback-B6dzNJxy.png" 
-                        alt="Asep Dudung SH, Kepala Desa Serang, wearing a suit and red tie, facing forward with a neutral expression against a plain background" 
-                        class="rounded-circle border border-3 mb-3" 
-                        style="width: 400px; height: 380px; object-fit: cover;">
+                    @if ($data->image)
+                        <img src="{{ asset('storage/' . $data->image) }}" 
+                            alt="{{ $data->nama }}" 
+                            class="rounded-circle border border-3 mb-3" 
+                            style="width: 390px; height: 380px; object-fit: cover;">
+                    @else
+                        <img src="https://cdn.digitaldesa.com/statics/profil-v2/assets/fallback-B6dzNJxy.png" 
+                            alt="{{ $data->nama }}" 
+                            class="rounded-circle border border-3 mb-3" 
+                            style="width: 400px; height: 380px; object-fit: cover;">
+                    @endif
                 </div>
 
                 <!-- Teks di sebelah kanan -->
@@ -82,10 +89,10 @@
                     <h3 class="text-success fw-bold mb-3" style="font-size: 2rem;">
                         Sambutan Kepala Desa Serang
                     </h3>
-                    <p class="fw-bold mb-1 fs-5">ASEP DUDUNG, SH</p>
+                    <p class="fw-bold mb-1 fs-5">{{ $data->nama }}</p>
                     <p class="text-muted mb-3">Kepala Desa</p>
                     <p class="text-start">
-                        [Isi sambutan singkat dari Kepala Desa yang menjelaskan visi, misi, dan harapan untuk kemajuan Desa Serang.]
+                        {{ $data->sambutan }}
                     </p>
                 </div>
             </div>
