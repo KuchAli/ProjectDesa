@@ -103,7 +103,7 @@ class SellerController extends Controller
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        $path = $produk->image_path ?? null;
+        $path = $produk->image ?? null;
         if ($request->hasFile('image')) {
             if ($path) {
                 Storage::disk('public')->delete($path);
