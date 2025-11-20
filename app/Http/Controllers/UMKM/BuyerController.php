@@ -18,7 +18,7 @@ class BuyerController extends Controller
         }
 
         // Ambil produk + data penjual
-        $products = Product::with('seller')->latest()->get();
+        $products = Product::with('seller')->latest()->paginate(8);
 
         return view('umkm.buyer.index', compact('products'));
     }

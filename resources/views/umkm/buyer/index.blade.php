@@ -36,8 +36,8 @@
                 @endphp
 
                 <div class="d-flex justify-content-center gap-2">
-                    <a href="{{ route('umkm.buyer.products.detail', $p->id) }}" class="btn btn-outline-secondary btn-sm">Detail Produk</a>
-                    <a class="btn btn-outline-success btn-sm {{ !$phone ? 'disabled' : '' }}"
+                    <a href="{{ route('umkm.buyer.products.detail', $p->id) }}" class="btn btn-warning btn-sm">Detail Produk</a>
+                    <a class="btn btn-success btn-sm {{ !$phone ? 'disabled' : '' }}"
                         href="{{ $waLink }}"
                         target="_blank"
                         style="{{ !$phone ? 'pointer-events:none;' : '' }}">
@@ -53,6 +53,9 @@
         <p class="text-center">Belum ada produk tersedia.</p>
     @endforelse
 
+    <div class="justify-content-center d-flex mt-3">
+        {{ $products->links() }}
+    </div>
 </div>
 
 

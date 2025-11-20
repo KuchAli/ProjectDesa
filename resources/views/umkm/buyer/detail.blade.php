@@ -37,14 +37,14 @@
             <div class="mt-4 d-flex gap-2">
 
                 <a href="{{ route('umkm.buyer.index') }}"
-                   class="btn btn-outline-secondary">
+                   class="btn btn-secondary">
                     Kembali
                 </a>
 
                 @if($waLink)
                 <a href="{{ $waLink }}"
                    target="_blank"
-                   class="btn btn-outline-success">
+                   class="btn btn-success">
                     Hubungi Penjual
                 </a>
                 @else
@@ -57,6 +57,6 @@
 
         </div>
     </div>
-
+    
 </div>
 @endsection
